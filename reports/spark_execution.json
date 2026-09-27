@@ -1,0 +1,58 @@
+{
+  "status": "verified_event_log_counters",
+  "scope": "Original reference run only; local execution, no worker cluster or cloud service.",
+  "interpretation": "Task runtime is summed across tasks; it is not application wall time. Shuffle includes local shuffle.",
+  "applications": [
+    {
+      "jobs": 185,
+      "completed_stages": 185,
+      "completed_tasks": 584,
+      "shuffle_read_bytes": 1047765415,
+      "shuffle_write_bytes": 1021801282,
+      "executor_run_time_ms_sum": 125967,
+      "master": "local[4]",
+      "driver_memory": "4g",
+      "application_id": "local-1790478914233",
+      "application_name": "product-search-quality",
+      "start_ms": 1790478913927,
+      "application_wall_seconds": 47.889,
+      "executor_ids": [
+        "driver"
+      ]
+    },
+    {
+      "jobs": 87,
+      "completed_stages": 87,
+      "completed_tasks": 285,
+      "shuffle_read_bytes": 10338,
+      "shuffle_write_bytes": 10338,
+      "executor_run_time_ms_sum": 33510,
+      "master": "local[4]",
+      "driver_memory": "4g",
+      "application_id": "local-1790478975313",
+      "application_name": "product-search-quality",
+      "start_ms": 1790478974940,
+      "application_wall_seconds": 15.635,
+      "executor_ids": [
+        "driver"
+      ]
+    },
+    {
+      "jobs": 14,
+      "completed_stages": 14,
+      "completed_tasks": 17,
+      "shuffle_read_bytes": 0,
+      "shuffle_write_bytes": 0,
+      "executor_run_time_ms_sum": 3585,
+      "master": "local[4]",
+      "driver_memory": "4g",
+      "application_id": "local-1790479026786",
+      "application_name": "product-search-quality",
+      "start_ms": 1790479026436,
+      "application_wall_seconds": 5.853,
+      "executor_ids": [
+        "driver"
+      ]
+    }
+  ]
+}

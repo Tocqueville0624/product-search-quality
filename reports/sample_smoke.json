@@ -1,0 +1,19 @@
+{
+  "status": "verified",
+  "query_hash_modulus": 1000,
+  "rows_by_split": [
+    {
+      "dataset_split": "test",
+      "count": 428
+    },
+    {
+      "dataset_split": "validation",
+      "count": 444
+    },
+    {
+      "dataset_split": "train",
+      "count": 1072
+    }
+  ],
+  "feature_count": 17
+}

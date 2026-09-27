@@ -1,0 +1,31 @@
+# Model/review settings are consumed by model.py; data split constants are asserted.
+[study]
+status = "local_mvp"
+seed = 20260926
+locale = "us"
+dataset_version_flag = "large_version"
+dataset_version_value = 1
+labels = ["E", "S", "C", "I"]
+
+[split]
+preserve_official_test = true
+validation_fraction_of_official_train_queries = 0.20
+group_keys = ["product_locale", "query_id"]
+audit_normalized_query_overlap = true
+
+[evaluation]
+primary_metric = "macro_f1"
+uncertainty_group_keys = ["product_locale", "query_id"]
+test_status = "unopened"
+
+[review]
+pool = "predicted_exact"
+budget_fractions = [0.05, 0.10]
+budget_rounding = "floor"
+policies = ["uniform_random", "one_minus_p_exact"]
+random_repeats = 100
+label_use = "scoring_only"
+
+[compute]
+initial_mode = "local"
+cloud_budget_set = false

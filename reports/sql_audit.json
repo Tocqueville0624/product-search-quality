@@ -1,0 +1,136 @@
+[
+  {
+    "query": "SELECT split, esci_label, COUNT(*) AS pair_count,\n       COUNT(DISTINCT query_id) AS query_count,\n       COUNT(*) / SUM(COUNT(*)) OVER (PARTITION BY split) AS pair_share\nFROM esci_examples\nGROUP BY split, esci_label\nORDER BY split, esci_label",
+    "rows": [
+      {
+        "split": "test",
+        "esci_label": "C",
+        "pair_count": 10922,
+        "query_count": 3519,
+        "pair_share": 0.025652829515081195
+      },
+      {
+        "split": "test",
+        "esci_label": "E",
+        "pair_count": 277348,
+        "query_count": 22457,
+        "pair_share": 0.6514155795961124
+      },
+      {
+        "split": "test",
+        "esci_label": "I",
+        "pair_count": 42438,
+        "query_count": 8277,
+        "pair_share": 0.0996754055082417
+      },
+      {
+        "split": "test",
+        "esci_label": "S",
+        "pair_count": 95054,
+        "query_count": 14258,
+        "pair_share": 0.22325618538056474
+      },
+      {
+        "split": "train",
+        "esci_label": "C",
+        "pair_count": 29127,
+        "query_count": 9956,
+        "pair_share": 0.020908602123522052
+      },
+      {
+        "split": "train",
+        "esci_label": "E",
+        "pair_count": 970210,
+        "query_count": 74888,
+        "pair_share": 0.6964580927065036
+      },
+      {
+        "split": "train",
+        "esci_label": "I",
+        "pair_count": 119467,
+        "query_count": 25111,
+        "pair_share": 0.0857585048199543
+      },
+      {
+        "split": "train",
+        "esci_label": "S",
+        "pair_count": 274259,
+        "query_count": 44062,
+        "pair_share": 0.19687480035002006
+      }
+    ]
+  },
+  {
+    "query": "SELECT product_locale, product_id, COUNT(*) AS product_rows\nFROM esci_products\nWHERE product_locale = 'us'\nGROUP BY product_locale, product_id\nHAVING COUNT(*) > 1\nORDER BY product_rows DESC, product_locale, product_id",
+    "rows": []
+  },
+  {
+    "query": "SELECT (SELECT COUNT(*) FROM esci_examples) AS input_pair_count,\n       COUNT(*) AS joined_pair_count,\n       SUM(CASE WHEN product_matched THEN 0 ELSE 1 END) AS unmatched_pair_count,\n       AVG(CASE WHEN product_matched THEN 1.0 ELSE 0.0 END) AS product_match_rate\nFROM esci_joined",
+    "rows": [
+      {
+        "input_pair_count": 1818825,
+        "joined_pair_count": 1818825,
+        "unmatched_pair_count": 0,
+        "product_match_rate": "1.00000"
+      }
+    ]
+  },
+  {
+    "query": "SELECT split, COUNT(*) AS pair_count,\n       SUM(CASE WHEN query IS NULL OR TRIM(query) = '' THEN 1 ELSE 0 END) AS missing_query,\n       SUM(CASE WHEN product_title IS NULL OR TRIM(product_title) = '' THEN 1 ELSE 0 END) AS missing_title,\n       SUM(CASE WHEN product_brand IS NULL OR TRIM(product_brand) = '' THEN 1 ELSE 0 END) AS missing_brand,\n       SUM(CASE WHEN product_color IS NULL OR TRIM(product_color) = '' THEN 1 ELSE 0 END) AS missing_color\nFROM esci_joined\nGROUP BY split\nORDER BY split",
+    "rows": [
+      {
+        "split": "test",
+        "pair_count": 425762,
+        "missing_query": 0,
+        "missing_title": 0,
+        "missing_brand": 19969,
+        "missing_color": 128668
+      },
+      {
+        "split": "train",
+        "pair_count": 1393063,
+        "missing_query": 0,
+        "missing_title": 0,
+        "missing_brand": 63481,
+        "missing_color": 416560
+      }
+    ]
+  },
+  {
+    "query": "SELECT product_locale, query_id, COUNT(DISTINCT split) AS split_count\nFROM esci_examples\nGROUP BY product_locale, query_id\nHAVING COUNT(DISTINCT split) > 1\nORDER BY product_locale, query_id",
+    "rows": [
+      {
+        "product_locale": "us",
+        "query_id": 79706,
+        "split_count": 2
+      }
+    ]
+  },
+  {
+    "query": "WITH candidates AS (\n    SELECT split, query_id, COUNT(*) AS candidate_count\n    FROM esci_examples\n    GROUP BY split, query_id\n)\nSELECT split, COUNT(*) AS query_count, MIN(candidate_count) AS minimum_candidates,\n       PERCENTILE_APPROX(candidate_count, ARRAY(0.5, 0.9, 0.99)) AS candidate_quantiles,\n       MAX(candidate_count) AS maximum_candidates\nFROM candidates\nGROUP BY split\nORDER BY split",
+    "rows": [
+      {
+        "split": "test",
+        "query_count": 22458,
+        "minimum_candidates": 8,
+        "candidate_quantiles": [
+          16,
+          39,
+          43
+        ],
+        "maximum_candidates": 126
+      },
+      {
+        "split": "train",
+        "query_count": 74888,
+        "minimum_candidates": 3,
+        "candidate_quantiles": [
+          16,
+          31,
+          42
+        ],
+        "maximum_candidates": 198
+      }
+    ]
+  }
+]

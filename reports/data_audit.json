@@ -1,0 +1,122 @@
+{
+  "status": "verified",
+  "seed": 20260926,
+  "spark_version": "3.5.7",
+  "spark_master": "local[4]",
+  "raw_all_locale_pairs": 2621288,
+  "raw_all_locale_products": 1814924,
+  "us_large_pairs": 1818825,
+  "us_products": 1215854,
+  "duplicate_product_keys": 0,
+  "duplicate_example_ids": 0,
+  "joined_rows": 1818825,
+  "unmatched_products": 0,
+  "missing_or_blank_titles": 0,
+  "train_test_overlap": {
+    "query_ids": 1,
+    "normalized_query_texts": 1,
+    "excluded_train_query_ids": 1,
+    "exact_queryid_product_pairs": 0
+  },
+  "excluded_train_rows": 3,
+  "policy": "Preserve official test; remove whole training query IDs overlapping test query ID or lowercase/whitespace-normalized text; validation is xxhash64(normalized text, seed) modulo 10000 < 2000.",
+  "splits": {
+    "train": {
+      "rows": 1113987,
+      "queries": 59947,
+      "query_sha256": "84938593599483c9e457410b7f23f225f1a84cd78293aebd675aa1fa717e4430"
+    },
+    "validation": {
+      "rows": 279073,
+      "queries": 14940,
+      "query_sha256": "c38d8b4ed4148650eab20413fc7bb67ed5eb10f6d3c20bc731a66909d60a3491"
+    },
+    "test": {
+      "rows": 425762,
+      "queries": 22458,
+      "query_sha256": "ce03ea2a4086493b1d9d9347af065cc28df6dbd167f7bcc259fc8b5d8bccecee"
+    }
+  },
+  "label_counts": [
+    {
+      "dataset_split": "test",
+      "label": "C",
+      "count": 10922
+    },
+    {
+      "dataset_split": "test",
+      "label": "E",
+      "count": 277348
+    },
+    {
+      "dataset_split": "test",
+      "label": "I",
+      "count": 42438
+    },
+    {
+      "dataset_split": "test",
+      "label": "S",
+      "count": 95054
+    },
+    {
+      "dataset_split": "train",
+      "label": "C",
+      "count": 23202
+    },
+    {
+      "dataset_split": "train",
+      "label": "E",
+      "count": 775565
+    },
+    {
+      "dataset_split": "train",
+      "label": "I",
+      "count": 94807
+    },
+    {
+      "dataset_split": "train",
+      "label": "S",
+      "count": 220413
+    },
+    {
+      "dataset_split": "validation",
+      "label": "C",
+      "count": 5925
+    },
+    {
+      "dataset_split": "validation",
+      "label": "E",
+      "count": 194643
+    },
+    {
+      "dataset_split": "validation",
+      "label": "I",
+      "count": 24660
+    },
+    {
+      "dataset_split": "validation",
+      "label": "S",
+      "count": 53845
+    }
+  ],
+  "feature_columns": [
+    "query_token_count",
+    "title_token_count",
+    "token_intersection_count",
+    "query_coverage",
+    "title_coverage",
+    "token_jaccard",
+    "exact_title_match",
+    "query_in_title",
+    "brand_token_overlap",
+    "brand_match",
+    "color_token_overlap",
+    "color_match",
+    "query_has_number",
+    "numeric_mismatch",
+    "title_missing",
+    "brand_missing",
+    "color_missing"
+  ],
+  "elapsed_seconds": 40.71
+}

@@ -1,0 +1,11 @@
+{
+  "status": "verified",
+  "independent_output_directory": ".reproduction/verification",
+  "same_frozen_design": true,
+  "exact_match": [
+    "classification",
+    "review",
+    "uncertainty"
+  ],
+  "meaning": "Technical reproduction; not a fresh holdout or new scientific validation."
+}

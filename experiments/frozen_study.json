@@ -1,0 +1,165 @@
+{
+  "status": "frozen_before_test",
+  "frozen_at_utc": "2026-09-27T03:16:30.441124+00:00",
+  "question": "Classify relevance; prioritize non-Exact judgements inside the predicted-Exact pool.",
+  "selected_model": "logistic_class_weighted",
+  "selection_rule": "highest validation macro-F1 among two fixed candidates",
+  "majority_label": "E",
+  "majority_p_e": 0.6962065086935485,
+  "label_order": [
+    "E",
+    "S",
+    "C",
+    "I"
+  ],
+  "features": [
+    "query_token_count",
+    "title_token_count",
+    "token_intersection_count",
+    "query_coverage",
+    "title_coverage",
+    "token_jaccard",
+    "exact_title_match",
+    "query_in_title",
+    "brand_token_overlap",
+    "brand_match",
+    "color_token_overlap",
+    "color_match",
+    "query_has_number",
+    "numeric_mismatch",
+    "title_missing",
+    "brand_missing",
+    "color_missing"
+  ],
+  "hyperparameters": {
+    "regParam": 0.05,
+    "maxIter": 100,
+    "tol": 1e-06,
+    "family": "multinomial"
+  },
+  "review_budgets": [
+    0.05,
+    0.1
+  ],
+  "random_repeats": 100,
+  "priority": "ascending p_e, then example_id; same predicted-E pool; no labels in selection",
+  "probability_caveat": "Class-weighted scores are ranking signals, not calibrated natural-prevalence probabilities.",
+  "slices": [
+    "query length 1-2 vs 3+",
+    "query contains digits",
+    "numeric mismatch",
+    "brand missing",
+    "product seen in training"
+  ],
+  "bootstrap": {
+    "unit": "query_id",
+    "replicates": 300,
+    "confidence": 0.95,
+    "budget": 0.1
+  },
+  "seed": 20260926,
+  "training_rows": 1113987,
+  "training_class_counts": {
+    "I": 94807,
+    "E": 775565,
+    "C": 23202,
+    "S": 220413
+  },
+  "data_source_manifest": {
+    "dataset": "Amazon ESCI",
+    "revision": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+    "files": [
+      {
+        "filename": "shopping_queries_dataset_examples.parquet",
+        "url": "https://media.githubusercontent.com/media/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/shopping_queries_dataset/shopping_queries_dataset_examples.parquet",
+        "revision": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+        "bytes": 51286808,
+        "sha256": "4a735b693b4a424a6fc67f5be6e4c811495c488bbf66d02a602d308b2744263a",
+        "rows": 2621288,
+        "schema": "example_id: int64\nquery: string\nquery_id: int64\nproduct_id: string\nproduct_locale: string\nesci_label: string\nsmall_version: int64\nlarge_version: int64\nsplit: string\n__index_level_0__: int64\n-- schema metadata --\npandas: '{\"index_columns\": [\"__index_level_0__\"], \"column_indexes\": [{\"na' + 1392",
+        "verified_utc": "2026-09-27T03:14:59.425561+00:00",
+        "license_url": "https://github.com/amazon-science/esci-data/blob/7916cdf6ab75a462e77f20ab40428a10923998d5/LICENSE"
+      },
+      {
+        "filename": "shopping_queries_dataset_products.parquet",
+        "url": "https://media.githubusercontent.com/media/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/shopping_queries_dataset/shopping_queries_dataset_products.parquet",
+        "revision": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+        "bytes": 1108857465,
+        "sha256": "25124442d064d64b26f74082d6fa09438d679efc0c183cf28d19064a2b65a265",
+        "rows": 1814924,
+        "schema": "product_id: string\nproduct_title: string\nproduct_description: string\nproduct_bullet_point: string\nproduct_brand: string\nproduct_color: string\nproduct_locale: string\n-- schema metadata --\npandas: '{\"index_columns\": [{\"kind\": \"range\", \"name\": null, \"start\": 0, \"' + 1168",
+        "verified_utc": "2026-09-27T03:14:59.972124+00:00",
+        "license_url": "https://github.com/amazon-science/esci-data/blob/7916cdf6ab75a462e77f20ab40428a10923998d5/LICENSE"
+      }
+    ]
+  },
+  "splits": {
+    "train": {
+      "rows": 1113987,
+      "queries": 59947,
+      "query_sha256": "84938593599483c9e457410b7f23f225f1a84cd78293aebd675aa1fa717e4430"
+    },
+    "validation": {
+      "rows": 279073,
+      "queries": 14940,
+      "query_sha256": "c38d8b4ed4148650eab20413fc7bb67ed5eb10f6d3c20bc731a66909d60a3491"
+    },
+    "test": {
+      "rows": 425762,
+      "queries": 22458,
+      "query_sha256": "ce03ea2a4086493b1d9d9347af065cc28df6dbd167f7bcc259fc8b5d8bccecee"
+    }
+  },
+  "source_code_sha256": {
+    "src/search_quality/__init__.py": "e5d793f585d35536b2a386439d9ab63db2f809f4de75702942acb253512f5e90",
+    "src/search_quality/__main__.py": "d6e0acc1e66c3a6b88ec96cc14793aada1a2f4baf66c31823d8dda5d55375444",
+    "src/search_quality/acquire.py": "97503ee38ad14f1dc057fb34fe4b7e0307febf28192a433531d1919c0f788bc1",
+    "src/search_quality/data.py": "de38134336dabfe7deff4ed523d44d8942b5504d5e97d7c6e357ce2cd8406698",
+    "src/search_quality/evaluation.py": "4d986590875d31539baff90124816f540780db6731ecf2b252441dbd249418b3",
+    "src/search_quality/features.py": "feacb60e0e2ac33b96064b2286e5c36cc366a69344413dc3db9d0fd5413e983f",
+    "src/search_quality/model.py": "301b4cdb97ca589ac5c3126fc8c31c165b3afee102a35afd290a07c69e24643f",
+    "src/search_quality/runtime.py": "2a78ce673d3fbd86c485329ee4031796fc78217283cb1e9126156845c642e9ba"
+  },
+  "frozen_artifact_directories": [
+    "models/logistic_class_weighted",
+    "data/processed/features"
+  ],
+  "artifact_sha256": {
+    "models/logistic_class_weighted/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/metadata/part-00000": "754a63fbcdfc3069ec04357ac93f4cf5a1c4a45af6f711b3e326d60122975ed6",
+    "models/logistic_class_weighted/stages/0_VectorAssembler_6509ed6ee6e1/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/stages/0_VectorAssembler_6509ed6ee6e1/metadata/part-00000": "f03e905a9d9d8626eadf330dcf29e2efb0350ab813cc5626b550fb6582bf9645",
+    "models/logistic_class_weighted/stages/1_StandardScaler_51ca83994c7e/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/stages/1_StandardScaler_51ca83994c7e/data/part-00000-edf211bf-d96b-4beb-b8cf-0703bb5ad521-c000.snappy.parquet": "c778f43ac7ba9506efe9b68ea45f21405b4311871de5fdb7c789d8496ec91a2f",
+    "models/logistic_class_weighted/stages/1_StandardScaler_51ca83994c7e/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/stages/1_StandardScaler_51ca83994c7e/metadata/part-00000": "f22bf38095e32352b6ac1e20fd739b0fc9fecb8215d9f73d72ea1e5b2bb2ee89",
+    "models/logistic_class_weighted/stages/2_LogisticRegression_21e58c847b21/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/stages/2_LogisticRegression_21e58c847b21/data/part-00000-58721cfe-402c-4fa2-8cba-3e92a275ca38-c000.snappy.parquet": "66434c8e0f7d5941d771a45977aa4834c86a8706350b1e81d0c728b3936a6472",
+    "models/logistic_class_weighted/stages/2_LogisticRegression_21e58c847b21/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/logistic_class_weighted/stages/2_LogisticRegression_21e58c847b21/metadata/part-00000": "951c6314b4e8ebe035516902cff123e611d550a0dbd7dcbecf5139026999fb7e",
+    "data/processed/features/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/processed/features/dataset_split=test/part-00000-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "9e860fc741047341795dfc7649a23bb84e515f2ef8b70038b5e2221715ce3311",
+    "data/processed/features/dataset_split=test/part-00001-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "85f3a85bda6772a479b4c2b76c1a721fe79619050270dc739d5a5676240743f3",
+    "data/processed/features/dataset_split=test/part-00002-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "42a419af649cf0a17f5734f6a2f4f8996c66901ee2dbbe5fc2c75478b1a2e702",
+    "data/processed/features/dataset_split=test/part-00003-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "c3e2b627f730772ebd6d5f70ba48617074275740eb2801730e452f4d940fa2d2",
+    "data/processed/features/dataset_split=train/part-00000-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "11296e8ec25b053c1e9841cfa820e8b026f94c9f435da6db8fe6fd00370750d2",
+    "data/processed/features/dataset_split=train/part-00001-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "d958810aefab7dc0a2a781945225f36895cba916f31c5cc573b847cddd274aa4",
+    "data/processed/features/dataset_split=train/part-00002-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "d7233476e974577c2521015b01cab854116181bd3aaf20135bc7f86fda8f4872",
+    "data/processed/features/dataset_split=train/part-00003-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "ac0532b2d8528266faf0dbbb42852b22189b7564099d23fc82ee12ecd39d0ca6",
+    "data/processed/features/dataset_split=validation/part-00000-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "db790f8f2d91dcc812caa2ece765515152468d30f70f3c6135bc37f0e4924cee",
+    "data/processed/features/dataset_split=validation/part-00001-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "ac6263f2066637eaf3f273c337c8cee4bd100ee212c07ed98a7a103766132a43",
+    "data/processed/features/dataset_split=validation/part-00002-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "08e942e2a816f9d27d217c7695780dddbbaca03faf86656e29da6d9fe12a6396",
+    "data/processed/features/dataset_split=validation/part-00003-e97dd2ed-4b8f-42a2-b838-599023edb787.c000.snappy.parquet": "71ec1194baf8bff8cc70ed8917704801a18fcb389b2f595df5816859e1344eb7"
+  },
+  "study_config_sha256": "2c89a7408d76ed788acac1f17bde7df783ccd0ae398b2d9a227dc07d91cb7236",
+  "git_revision_at_run": "uncommitted_initial_implementation",
+  "environment": {
+    "python": "3.11.15",
+    "spark": "3.5.7",
+    "master": "local[4]",
+    "platform": "Darwin",
+    "architecture": "arm64",
+    "driver_memory": "4g"
+  },
+  "elapsed_seconds": 14.629
+}
