@@ -6,6 +6,8 @@
 
 The first implementation had no commit yet; its exact source contents are identified by SHA-256. The public repository commit preserves those source files. Stage durations are observed local measurements, exclude downloads and some startup time, and are not a Spark speedup comparison.
 
+The complete original frozen source is preserved in commit `ee8b6ba`. A later package-docstring correction is explicitly recorded in `post-freeze-documentation.json`; it changes no executable behavior and leaves the frozen study untouched.
+
 To technically reproduce the frozen design, use `scripts/run_study.py --name <new-name>`; it keeps new outputs in ignored `.reproduction/` and does not overwrite these reference artifacts. Each new run independently freezes before evaluating. Repetition is not independent scientific validation, and tuning from published test errors requires a fresh holdout for confirmatory claims.
 
 The `test_status = "unopened"` setting in the frozen study configuration describes its pre-evaluation design state. The actual reference test is now exposed, as recorded by `test_exposure.json`, final metrics, and `docs/STATUS.md`; do not infer current exposure from that immutable config string.

@@ -1,6 +1,6 @@
 # 当前状态
 
-更新：2026-09-26。阶段：**本地 MVP 已验证；正在完成公开发布核验。**
+更新：2026-09-26。阶段：**本地 MVP 已验证；公开 GitHub 仓库已创建。**
 
 ## 已验证
 
@@ -43,4 +43,4 @@
 
 ## 发布与许可
 
-用户本轮已授权在质量确认后分享到 GitHub。原始项目代码采用 MIT；ESCI 保留 Apache-2.0 和上游 NOTICE。最终远程 URL 与提交状态在发布后核实。
+用户本轮已授权在质量确认后分享到 GitHub。仓库：[Tocqueville0624/product-search-quality](https://github.com/Tocqueville0624/product-search-quality)。原始项目代码采用 MIT；ESCI 保留 Apache-2.0 和上游 NOTICE。完整冻结源码已保存于初始提交 `ee8b6ba`；后续清理仅修正包说明中的初始化占位文字，未改变可执行逻辑或指标，见 `experiments/post-freeze-documentation.json`。

@@ -45,3 +45,7 @@ The work provides concrete portfolio evidence of local PySpark/Spark SQL, data p
 Minor documentation discrepancy: the frozen slice description says “1–2” query tokens, while executable code and results say “0–2.” Independently confirmed zero test pairs have zero tokens, so reported test slice values are unaffected. The original freeze is preserved rather than silently edited after evaluation.
 
 Further improvements motivated by these test results require a fresh holdout for new confirmatory claims; reuse of this test must be labeled exploratory.
+
+## Publication addendum
+
+Commit `ee8b6ba` preserves all eight source files exactly as frozen and reviewed above. After that commit, the obsolete initialization-only package docstring in `src/search_quality/__init__.py` was corrected. No executable logic or metrics changed. Old/new hashes and the baseline commit are recorded in [post-freeze-documentation.json](../experiments/post-freeze-documentation.json); the original frozen study was not rewritten. A separate complete technical reproduction matched classification, review and bootstrap outputs exactly ([reproduction check](../reports/reproduction_check.json)).

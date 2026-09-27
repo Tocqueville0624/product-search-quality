@@ -1,1 +1,1 @@
-"""Product Search Quality: implementation has not started yet."""
+"""Local PySpark relevance modeling and offline audit prioritization."""

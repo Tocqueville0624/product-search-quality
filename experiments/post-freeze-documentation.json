@@ -1,0 +1,8 @@
+{
+  "status": "documentation_only_after_final_evaluation",
+  "original_frozen_source_commit": "ee8b6bac22cd320961f3b8fd40d3d39db2641622",
+  "file": "src/search_quality/__init__.py",
+  "old_sha256": "e5d793f585d35536b2a386439d9ab63db2f809f4de75702942acb253512f5e90",
+  "new_sha256": "4a6fd1bb27ba0745b1a3d3df4a37ae2bf8ba388f154eaf05d6d27f0fc7c0cf9e",
+  "change": "Replace obsolete initialization package docstring; no executable changes, no metric changes, original freeze retained."
+}
