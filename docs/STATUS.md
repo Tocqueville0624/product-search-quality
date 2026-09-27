@@ -19,6 +19,8 @@
 
 ## 查看入口
 
+补充核查：针对“是否有一模一样的公开分析”复查论文、网页和 GitHub 索引；未找到完整匹配，不能据此证明唯一性。README 和 prior-art 已补充 uncertainty sampling、selective classification 和 PRECISE 的来源与区别；模型、冻结记录和结果未改。
+
 - README：对外项目概览、主要发现、完整复现命令。
 - `reports/product-decision-memo.md`：复核运营建议及未来试点。
 - `reports/test_metrics.json`、`reports/data_audit.json`、`reports/spark_execution.json`：真实结果和本地 Spark 执行证据。

@@ -27,4 +27,6 @@ The optional local PDF generator uses an installed Chinese font (or a user-speci
 
 [Prior-art research](docs/prior-art.md) documents similar public work and the independent contribution boundary. [Learning resources](docs/learning-resources.md) cite primary documentation for the methods used. Reviewing a repository is not evidence of code incorporation or permission to copy it.
 
+The post-implementation prior-art follow-up adds uncertainty sampling (Settles, 2009), selective classification (Geifman and El-Yaniv, 2017), and PRECISE (Divekar and Majumder, 2026) as method context or related work. These sources were added after the MVP; no code or results from them were incorporated, and their algorithms are not claimed as this project's invention.
+
 If substantive code is later copied or adapted, record its URL, revision, license, destination, purpose and changes here, and retain required attribution close to the adapted code. Public visibility alone is not a reuse license. Employer/client prompts, labels, rubrics and confidential artifacts are excluded.

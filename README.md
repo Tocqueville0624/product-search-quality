@@ -95,4 +95,6 @@ A sensible next step is human adjudication of development errors, followed by a 
 
 This is an independent portfolio project, with no Amazon affiliation or endorsement. ESCI, the classification task, logistic regression, and Spark processing are established work. The contribution is the implementation, measurement discipline, and operational analysis.
 
+Low-confidence prioritization is an established idea related to uncertainty sampling ([Settles, 2009](https://minds.wisconsin.edu/handle/1793/60660)); this project does not propose a new selection algorithm or run an active-learning loop. A post-implementation [prior-art follow-up](docs/prior-art.md) compares related work, including PRECISE's search-metric estimation, and documents the limits of the similarity search.
+
 Reddy et al. (2022), [*Shopping Queries Dataset: A Large-Scale ESCI Benchmark for Improving Product Search*](https://arxiv.org/abs/2206.06588). Original project code is MIT licensed; ESCI retains its Apache-2.0 license and notices. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Codex assisted with code, analysis, and documentation; generated claims were checked against saved outputs.
